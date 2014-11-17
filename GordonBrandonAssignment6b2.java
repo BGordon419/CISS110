@@ -6,14 +6,17 @@ public class GordonBrandonAssignment6b2 {
 
    public static void main(String[] args) throws IOException {
 
+      //Asks user to input account number to test
       int accountNumber = Integer.parseInt(JOptionPane.showInputDialog("Enter an account number to check.",0));
 
+      //Checks value against existing file containing accounts numbers
       if(CheckNumber(accountNumber)==true)
          JOptionPane.showMessageDialog(null,"That account number is valid.");
       else
          JOptionPane.showMessageDialog(null,"That account number is not valid.");
    }
 
+   // Takes number from user and checks it against the account number file
    public static boolean CheckNumber(int number) throws IOException {
 
       boolean value = false;
@@ -22,6 +25,8 @@ public class GordonBrandonAssignment6b2 {
 
       for(int x=0;x<arraySize[0];x++) {
 
+         // Checks size of the array of account numbers
+         // If the size wasn't divisible by 2 or 3, it will create one long array.
          if(arraySize[1] == 0) {
             if(accountNumbers[x][0]==number) {
                value = true;
@@ -32,7 +37,7 @@ public class GordonBrandonAssignment6b2 {
             for(int y=0;y<arraySize[1];y++) {
 
                if(accountNumbers[x][y]==number) {
-                  value = true;
+                  value = true; // If number is found, cancel search
                   break;
                }
             }
@@ -44,20 +49,23 @@ public class GordonBrandonAssignment6b2 {
       return value;
    }
 
+   //Reads the account numbers into an array
    public static int[][] ReadArray() throws IOException {
 
+      // Creates arrays
       int[] arraySize = ArraySize();
-
       int[][] array = new int[arraySize[0]][arraySize[1]];
 
+      //Creates files
       File file = new File(System.getProperty("user.dir") + "/accountNumbers.txt");
       Scanner inputFile = new Scanner(file);
 
+      // Reads into array
       for(int x=0;x<arraySize[0];x++) {
 
          if(arraySize[1] == 0) {
-
             array[x][0] = Integer.parseInt(inputFile.nextLine());
+            
          } else {
             for(int y=0;y<arraySize[1];y++) {
 
