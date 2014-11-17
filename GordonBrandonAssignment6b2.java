@@ -63,9 +63,11 @@ public class GordonBrandonAssignment6b2 {
       // Reads into array
       for(int x=0;x<arraySize[0];x++) {
 
+         // Checks size of the array of account numbers
+         // If the size wasn't divisible by 2 or 3, it will create one long array.
          if(arraySize[1] == 0) {
             array[x][0] = Integer.parseInt(inputFile.nextLine());
-            
+
          } else {
             for(int y=0;y<arraySize[1];y++) {
 
@@ -77,18 +79,22 @@ public class GordonBrandonAssignment6b2 {
       return array;
    }
 
+   // Divides number of lines by a few common prime numbers to split
+   // into multiple groups
    public static int[] ArraySize() throws IOException {
 
-      //Determines number of lines
+      // Opens file for read
       File dataFile = new File(System.getProperty("user.dir") + "/accountNumbers.txt");
       FileReader fr = new FileReader(dataFile);
       LineNumberReader lnr = new LineNumberReader(fr);
 
+      //Determines number of lines
       int linenumber = 0;
       while (lnr.readLine() != null) {
          linenumber++;
       }
 
+      // Division
       int[] numberOfLines = new int[2];
       if(linenumber % 3 == 0) {
          numberOfLines[0] = linenumber / 3;
@@ -104,6 +110,7 @@ public class GordonBrandonAssignment6b2 {
 
       }
 
+      // Unecessary??
       lnr.close();
       fr.close();
 
