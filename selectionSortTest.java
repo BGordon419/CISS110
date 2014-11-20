@@ -22,51 +22,29 @@ public class selectionSortTest {
       for(int x=0;x<sorted.length;x++) {
          System.out.println(sorted[x]);
       }
-
-      sorted2 = SelectionSort2(array);
-      System.out.println();
-      for(int x=0;x<sorted.length;x++) {
-         System.out.println(sorted[x]);
-      }
    }
 
    // Sorts array using bubble sort
    public static int[] SelectionSort(int array[]) {
-      int x, y, temp, lowest = array[0], index; // Counter and holding variable
+      int x, y, index=0, smallest, temp;
+      for(x=0;x<array.length-1;x++) {
 
-      for(x=array.length-1;x>0;x++) {
+         smallest = array[x];
+         for(y=x+1;y<array.length;y++) {
 
-         index=0;
-         for(y=1;y<=x;y++) {
-
-            if(array[y]>array[index]) {
+            index = y;
+            if(array[y]<smallest) {
+               smallest = array[y];
                index = y;
             }
          }
-         temp = array[index];
+         temp = smallest;
          array[index] = array[x];
-         array[x] = temp;
-      }
+         array[x] = smallest;
 
+      }
       System.out.println();
       return array;
 
-   }
-
-   public static int[] SelectionSort2 ( int[] num ) {
-      int i, j, first, temp;
-      for ( i=num.length-1; i>0; i-- )
-      {
-         first = 0;   //initialize to subscript of first element
-         for(j = 1; j <= i; j ++)   //locate smallest element between positions 1 and i.
-         {
-            if( num[ j ] < num[ first ] )
-               first = j;
-         }
-         temp = num[ first ];   //swap smallest found with element in position i.
-         num[ first ] = num[ i ];
-         num[ i ] = temp;
-      }
-      return num;
    }
 }
