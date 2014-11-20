@@ -5,7 +5,7 @@ public class selectionSortTest {
    public static void main(String[] args) {
 
       Random rand = new Random();
-      int[] sorted, array = new int[10];
+      int[] sorted, sorted2, array = new int[15];
 
       // Fill array with random numbers
       for(int x=0;x<array.length;x++) {
@@ -22,36 +22,51 @@ public class selectionSortTest {
       for(int x=0;x<sorted.length;x++) {
          System.out.println(sorted[x]);
       }
+
+      sorted2 = SelectionSort2(array);
+      System.out.println();
+      for(int x=0;x<sorted.length;x++) {
+         System.out.println(sorted[x]);
+      }
    }
 
    // Sorts array using bubble sort
    public static int[] SelectionSort(int array[]) {
-      int x, y, temp, iteration; // Counter and holding variable
-      boolean swapped = true;
+      int x, y, temp, lowest = array[0], index; // Counter and holding variable
 
-      while(swapped) {
-         swapped = false;
-         for(x=0;x<array.length-1;x++) {
+      for(x=array.length-1;x>0;x++) {
 
-            for(y=0;y<array.length-1;y++) {
+         index=0;
+         for(y=1;y<=x;y++) {
 
-               // Checks to see if which od two numbers is larger
-               if(array[x]>array[y-iteration]) {
-                  temp = array[x];
-                  array[x] = array[y-iteration];
-                  array[y-iteration] = temp;
-
-                  iteration++;
-                  swapped = true;
-                  // System.out.println(array[x] + ", " + array[x+1]);
-               }
-
+            if(array[y]>array[index]) {
+               index = y;
             }
          }
+         temp = array[index];
+         array[index] = array[x];
+         array[x] = temp;
       }
 
       System.out.println();
       return array;
 
+   }
+
+   public static int[] SelectionSort2 ( int[] num ) {
+      int i, j, first, temp;
+      for ( i=num.length-1; i>0; i-- )
+      {
+         first = 0;   //initialize to subscript of first element
+         for(j = 1; j <= i; j ++)   //locate smallest element between positions 1 and i.
+         {
+            if( num[ j ] < num[ first ] )
+               first = j;
+         }
+         temp = num[ first ];   //swap smallest found with element in position i.
+         num[ first ] = num[ i ];
+         num[ i ] = temp;
+      }
+      return num;
    }
 }
