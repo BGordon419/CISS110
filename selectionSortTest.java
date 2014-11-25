@@ -5,7 +5,7 @@ public class selectionSortTest {
    public static void main(String[] args) {
 
       Random rand = new Random();
-      int[] sorted, sorted2, array = new int[15];
+      int[] sorted, sorted2, array = new int[20];
 
       // Fill array with random numbers
       for(int x=0;x<array.length;x++) {
@@ -15,36 +15,37 @@ public class selectionSortTest {
 
       System.out.println();
 
-      // retrive sorted array.
+      // retrieve sorted array.
       sorted = SelectionSort(array);
 
-      // Prints sorted numbers
+      // Prints post-sorted numbers
       for(int x=0;x<sorted.length;x++) {
          System.out.println(sorted[x]);
       }
    }
 
-   // Sorts array using bubble sort
+   // Sorts array using selection sort
    public static int[] SelectionSort(int array[]) {
-      int x, y, index=0, smallest, temp;
-      for(x=0;x<array.length-1;x++) {
 
+      int smallest, x, y, index;
+      for(x=0;x<array.length;x++) {
+
+         index = 0;
          smallest = array[x];
-         for(y=x+1;y<array.length;y++) {
 
-            index = y;
+         // Finds smallest number
+         for(y=x;y<array.length;y++) {
             if(array[y]<smallest) {
                smallest = array[y];
                index = y;
             }
          }
-         temp = smallest;
+
+         //Swaps array[x] with smallest number in the array
          array[index] = array[x];
          array[x] = smallest;
 
       }
-      System.out.println();
       return array;
-
    }
 }
