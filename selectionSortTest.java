@@ -30,7 +30,7 @@ public class selectionSortTest {
       int smallest, x, y, index;
       for(x=0;x<array.length;x++) {
 
-         index = 0;
+         index = x;
          smallest = array[x];
 
          // Finds smallest number
