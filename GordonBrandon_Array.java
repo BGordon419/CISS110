@@ -6,40 +6,40 @@ public class GordonBrandon_Array {
      *    Douglas Cochrane
      *    Shreshta Kota
      */
-   
+
    public static void main(String[] args) {
-      
+
       /** Fills an array with random numbers
         *   Prints
         *   @param array[] Main array
         *   @param guess   User's guess
         *   @return        Returns nothing
         */
-      
+
       int array[] = new int[20];
-      
+
       int guess = 0;
-      
+
       Random(array);
-      
+
       System.out.println("'" + Largest(array) + "' is the largest number.");
       System.out.println("'" + Smallest(array) + "' is the smallest number.");
       System.out.println("There are '" + Even(array) + "' even numbers.");
       System.out.println();
-      
+
       while(guess!=-1) {
          guess = Integer.parseInt(JOptionPane.showInputDialog("Take a guess!\n Enter '-1' to end."));
-         
+
          if(Findit(array, guess) == true)
             System.out.println("You guessed correctly!");
          else
             System.out.println("You did not guess correctly!");
       }
-      
+
       System.out.println();
       PrintThem(array);
    }
-   
+
    /** Determines the largest number in the main array
      *  @param numbers[]  Main array
      *  @return           Largest number in the array
@@ -52,7 +52,7 @@ public class GordonBrandon_Array {
       }
       return largest;
    }
-   
+
    /** Determines the smallest number in the main array
      *  @param numbers[]  Main array
      *  @return           Smallest number in the array
@@ -64,9 +64,9 @@ public class GordonBrandon_Array {
             smallest = numbers[x];
       }
       return smallest;
-      
+
    }
-   
+
    /** Determines the number of even numbers in the main array
      *  @param numbers[]  Main array
      *  @return           Number of even numbers in the array
@@ -78,9 +78,9 @@ public class GordonBrandon_Array {
             evenCount++;
       }
       return evenCount;
-      
+
    }
-   
+
    /** Determines whether or not a user's guess is in the main array.
      *  @param numbers[]  Main array
      *  @param guess      User's guessed number
@@ -96,7 +96,7 @@ public class GordonBrandon_Array {
       }
       return false;
    }
-   
+
    /** Prints all values in the array
      *  @param numbers[]  Main array
      *  @return           Returns nothing
@@ -106,15 +106,15 @@ public class GordonBrandon_Array {
       for(x=0;x<numbers.length;x++)
          System.out.println(numbers[x]);
    }
-   
+
    /** Fills the main array with random numbers
      *  @param numbers[]  Main array
      *  @return           Returns nothing
      */
    public static void Random(int[] array) {
-      
+
       Random rand = new Random();
-      
+
       for(int x=0;x<array.length;x++)
          array[x] = rand.nextInt(100)+100;
    }
